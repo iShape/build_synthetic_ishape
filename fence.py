@@ -16,10 +16,10 @@ from bpycv.dataset_utils.dataset_generator import MetaDatasetGenerator
 from cfg_utils import get_arguments, get_default_cfg
 
 
-class HangerGenerator(MetaDatasetGenerator):
+class FenceGenerator(MetaDatasetGenerator):
     def __init__(self, cfg):
         bpy.ops.wm.open_mainfile(
-            filepath=os.path.join(cfg.SOURCE_ASSET, "hanger/hanger.blend")
+            filepath=os.path.join(cfg.SOURCE_ASSET, "fence/fence.blend")
         )
         super().__init__(cfg)
         self.hdri_manager = bpycv.HdriManager(
@@ -36,45 +36,36 @@ class HangerGenerator(MetaDatasetGenerator):
         hdri_path = self.hdri_manager.sample()
         bpycv.load_hdri_world(hdri_path)
 
-        cam_radius = random.uniform(3.3, 3.5)
-        cam_deg = random.uniform(45, 90)
+        cam_radius = random.uniform(1.5, 1.8)
+        cam_deg = random.uniform(60, 90)
         bpycv.set_cam_pose(cam_radius=cam_radius, cam_deg=cam_deg)
 
         instn = random.choice(cfg.OBJ_NUM_DIST)
-        hanger = bpy.data.objects["hanger"]
-        hanger["is_artifact"] = True
+        fence = bpy.data.objects["fence"]
+        fence["is_artifact"] = True
         for _ in range(instn - 1):
-            with bpycv.activate_obj(hanger):
-                obj = bpycv.duplicate(hanger, True)
+            with bpycv.activate_obj(fence):
+                obj = bpycv.duplicate(fence, True)
                 obj["is_duplicate"] = True
 
         objs = [obj for obj in bpy.data.objects if obj.get("is_artifact")]
-        pits = list(np.arange(-2, 2, 0.05))
 
-        for idx, obj in enumerate(objs,):
+        for idx, obj in enumerate(objs):
             obj["inst_id"] = idx + 1000
-            ENV_SIZE = 2.0
+            ENV_SIZE = 1.2
             location = (
                 random.uniform(-ENV_SIZE, ENV_SIZE),
                 random.uniform(-ENV_SIZE, ENV_SIZE),
-                idx * 0.04 + 0.1,
+                0.04 + 0.1 * idx,
             )
             rotation = (
-                3.1415 / 2,
+                0,
                 0,
                 random.random() * 2 * 3.1415,
             )
-            if idx > instn - random.choice([1, 5, 6, 8, 10]):
-                location = (0, pits.pop(random.choice(range(len(pits)))), 0.585)
-                rotation = 0, 0, random.choice([0, 3.1415])
-                with bpycv.activate_obj(obj):
-                    bpy.ops.rigidbody.object_remove()
-            else:
-                with bpycv.activate_obj(obj):
-                    bpy.ops.rigidbody.object_add()
             obj.location = location
             obj.rotation_euler = rotation
-        for i in range(20):
+        for i in range(120):
             bpy.context.scene.frame_set(bpy.context.scene.frame_current + 1)
         result = bpycv.render_data()
 
@@ -89,7 +80,7 @@ class HangerGenerator(MetaDatasetGenerator):
 
 def get_cfg():
     cfg = get_default_cfg()
-    cfg.OBJ_NUM_DIST = [20, 23, 25, 27, 30]
+    cfg.OBJ_NUM_DIST = [2, 2, 3, 3, 3, 4]
     return cfg.clone()
 
 
@@ -97,5 +88,5 @@ if __name__ == "__main__":
     args = get_arguments()
     cfg = get_cfg()
     cfg.merge_from_list_or_str(args.opts)
-    hanger_gen = HangerGenerator(cfg)
-    hanger_gen.generate_all()
+    fence_gen = FenceGenerator(cfg)
+    fence_gen.generate_all()
