@@ -11,7 +11,6 @@ from bpycv.dataset_utils.cfg_utils import *
 cfg.SOURCE_ASSET = os.path.abspath(os.path.join(__file__, "../../source_asset"))
 
 
-
 if __name__ == "__main__":
     from boxx import tree
 
