@@ -20,7 +20,8 @@ class LogGenerator(MetaDatasetGenerator):
     def __init__(self, cfg):
         super().__init__(cfg)
         self.hdri_manager = bpycv.HdriManager(
-            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri/all")
+            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri/all"),
+            category="nature",
         )
         self.texture_paths = boxx.glob(
             os.path.join(cfg.SOURCE_ASSET, "log/wood_texture/*")
@@ -85,7 +86,7 @@ class LogGenerator(MetaDatasetGenerator):
             return len(np.unique(result["inst"])) > 5
 
         if qualify_result(result):
-            result.save(dirr, index, save_blend=True)
+            result.save(dirr, index, save_blend=False)
         else:
             self.generate_one(dirr, index, meta_seed=meta_seed + 1)
 

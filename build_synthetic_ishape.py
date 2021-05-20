@@ -27,7 +27,12 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         synthetic_dataset_names = sys.argv[1:]
     for name in synthetic_dataset_names:
+        if name.isdigit():
+            name = all_synthetic_dataset_names[int(name)]
         assert (
             name in all_synthetic_dataset_names
         ), f'"{name}" not in {all_synthetic_dataset_names}'
         build_one_dataset(name)
+
+    # If build on brainpp
+    # python -m boxx.script  'p/mapmt(lambda i:os.system(f"rlaunch -P 50 --preemptible=best-effort --cpu=2 --memory=20000 -- python build_synthetic_ishape.py {i} ") ,range(5), pool=6)'
