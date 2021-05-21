@@ -35,4 +35,4 @@ if __name__ == "__main__":
         build_one_dataset(name)
 
     # If build on brainpp
-    # python -m boxx.script  'p/mapmt(lambda i:os.system(f"rlaunch -P 50 --preemptible=best-effort --cpu=2 --memory=20000 -- python build_synthetic_ishape.py {i} ") ,range(5), pool=6)'
+    # python -m boxx.script  'p/mapmt(lambda i:os.system(f"rlaunch -P 102 --preemptible=best-effort --cpu=2 --memory=20000 -- python build_synthetic_ishape.py {i} ") ,range(5), pool=6)'
