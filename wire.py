@@ -59,7 +59,7 @@ class WireGenerator(MetaDatasetGenerator):
         colors = np.array(boxx.getDefaultColorList(random.choice(range(7, 30)))) * 0.7
 
         color = random.choice([(0.5, 0.0, 0.0), (0.0, 0.5, 0.0), (0.0, 0.0, 0.5),])
-        ENV_SIZE = 0.5
+        ENV_SIZE = 0.3
         for inst_id, obj in enumerate(wires, 1000):
             obj["inst_id"] = inst_id
             location = (
@@ -68,9 +68,9 @@ class WireGenerator(MetaDatasetGenerator):
                 random.uniform(0.5, 1),
             )
             rotation = (
-                random.random() * 2 * pi,
-                # random.random() * pi / 4 - pi / 8,
-                random.random() * pi / 2 - pi / 4,
+                # random.random() * 2 * pi,
+                random.random() * pi / 4 - pi / 8,
+                random.random() * pi / 4 - pi / 8,
                 random.random() * 2 * pi,
             )
             obj.location = location
@@ -95,14 +95,14 @@ class WireGenerator(MetaDatasetGenerator):
             for i in range(30):
                 bpy.context.scene.frame_set(bpy.context.scene.frame_current + 1)
 
-            for i in range(30):
-                bpy.context.scene.frame_set(bpy.context.scene.frame_current + 1)
-                bpy.ops.wm.redraw_timer(type="DRAW", iterations=1)
-                bpy.context.view_layer.update()
-                sphere.location.x += 1 / 30 * 1.5
-                sphere2.location.y += 1 / 30 * 1.8
-                bpy.context.view_layer.update()
-                bpy.ops.wm.redraw_timer(type="DRAW", iterations=1)
+            # for i in range(30):
+            #     bpy.context.scene.frame_set(bpy.context.scene.frame_current + 1)
+            #     bpy.ops.wm.redraw_timer(type="DRAW", iterations=1)
+            #     bpy.context.view_layer.update()
+            #     sphere.location.x += 1 / 30 * 1.5
+            #     sphere2.location.y += 1 / 30 * 1.8
+            #     bpy.context.view_layer.update()
+            #     bpy.ops.wm.redraw_timer(type="DRAW", iterations=1)
             for i in range(10):
                 bpy.context.scene.frame_set(bpy.context.scene.frame_current + 1)
 
@@ -125,9 +125,9 @@ class WireGenerator(MetaDatasetGenerator):
 def get_cfg():
     cfg = get_default_cfg()
     cfg.OBJ_NUM_DIST = [
-        5,
         6,
         7,
+        8,
     ]
     return cfg.clone()
 
