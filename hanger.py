@@ -65,7 +65,7 @@ class HangerGenerator(MetaDatasetGenerator):
                 0,
                 random.random() * 2 * 3.1415,
             )
-            if idx > instn - random.choice([1, 5, 6, 8, 10]):
+            if idx > instn - random.choice([2, 3, 5, 7, 8, 10]):
                 location = (0, pits.pop(random.choice(range(len(pits)))), 0.585)
                 rotation = 0, 0, random.choice([0, 3.1415])
                 with bpycv.activate_obj(obj):
@@ -90,7 +90,7 @@ class HangerGenerator(MetaDatasetGenerator):
 
 def get_cfg():
     cfg = get_default_cfg()
-    cfg.OBJ_NUM_DIST = [20, 23, 25, 27, 30]
+    cfg.OBJ_NUM_DIST = [25, 27, 30]
     return cfg.clone()
 
 

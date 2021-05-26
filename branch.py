@@ -43,7 +43,7 @@ class BranchGenerator(MetaDatasetGenerator):
         bpycv.load_hdri_world(hdri_path)
 
         cam_radius = random.choice([6, 7, 8,])
-        cam_deg = random.uniform(0, 45)
+        cam_deg = random.uniform(0, 30)
         cam = bpycv.set_cam_pose(cam_radius=cam_radius, cam_deg=cam_deg)
         TREE_HEIGHT = 5
         cam.location.z += TREE_HEIGHT / 3
@@ -208,7 +208,7 @@ class BranchGenerator(MetaDatasetGenerator):
 
 def get_cfg():
     cfg = get_default_cfg()
-    cfg.OBJ_NUM_DIST = [10]
+    cfg.OBJ_NUM_DIST = [10, 12, 14]
     return cfg.clone()
 
 

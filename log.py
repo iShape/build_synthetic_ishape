@@ -83,7 +83,11 @@ class LogGenerator(MetaDatasetGenerator):
         result = bpycv.render_data()
 
         def qualify_result(result):
-            return len(np.unique(result["inst"])) > 5
+            if len(np.unique(result["inst"])) < 5:
+                return False
+            if ((0 < result["depth"]) & (result["depth"] < 0.3)).mean() > 0.2:
+                return False
+            return True
 
         if qualify_result(result):
             result.save(dirr, index, save_blend=False)

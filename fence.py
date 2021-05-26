@@ -38,7 +38,7 @@ class FenceGenerator(MetaDatasetGenerator):
         bpycv.load_hdri_world(hdri_path)
 
         cam_radius = random.uniform(1.5, 1.8)
-        cam_deg = random.uniform(60, 90)
+        cam_deg = random.uniform(45, 90)
         bpycv.set_cam_pose(cam_radius=cam_radius, cam_deg=cam_deg)
 
         instn = random.choice(cfg.OBJ_NUM_DIST)
@@ -81,7 +81,7 @@ class FenceGenerator(MetaDatasetGenerator):
 
 def get_cfg():
     cfg = get_default_cfg()
-    cfg.OBJ_NUM_DIST = [2, 2, 3, 3, 3, 4]
+    cfg.OBJ_NUM_DIST = [2, 3, 3, 3, 4, 4]
     return cfg.clone()
 
 
