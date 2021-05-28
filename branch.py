@@ -42,7 +42,7 @@ class BranchGenerator(MetaDatasetGenerator):
         hdri_path = self.hdri_manager.sample()
         bpycv.load_hdri_world(hdri_path)
 
-        cam_radius = random.choice([6, 7, 8,])
+        cam_radius = random.choice([7, 8,])
         cam_deg = random.uniform(0, 30)
         cam = bpycv.set_cam_pose(cam_radius=cam_radius, cam_deg=cam_deg)
         TREE_HEIGHT = 5
@@ -146,13 +146,14 @@ class BranchGenerator(MetaDatasetGenerator):
 
         area_radius = TREE_HEIGHT * 0.6
         min_gap = TREE_HEIGHT * 0.05
-        location_xyzs = list(
-            np.mgrid[
-                -area_radius:area_radius:min_gap, -area_radius:area_radius:min_gap, 0:1
-            ].T.reshape(
-                -1, 3,
-            )
-        )
+        location_xyzs = np.mgrid[
+            -area_radius:area_radius:min_gap, -area_radius:area_radius:min_gap, 0:1
+        ].T.reshape(-1, 3,)
+
+        location_xyzs = location_xyzs[
+            ((location_xyzs[:, :2] ** 2).sum(-1) + eps) ** 0.5 <= area_radius
+        ]
+        location_xyzs = list(location_xyzs)
 
         for inst_id, obj in enumerate(objs, 1000):
             obj["is_artifact"] = True
@@ -208,7 +209,7 @@ class BranchGenerator(MetaDatasetGenerator):
 
 def get_cfg():
     cfg = get_default_cfg()
-    cfg.OBJ_NUM_DIST = [10, 12, 14]
+    cfg.OBJ_NUM_DIST = [10, 11]
     return cfg.clone()
 
 
