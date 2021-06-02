@@ -87,6 +87,8 @@ class LogGenerator(MetaDatasetGenerator):
                 return False
             if ((0 < result["depth"]) & (result["depth"] < 0.3)).mean() > 0.2:
                 return False
+            if np.mean(result["image"].mean(-1) < 2.55) > 0.5:
+                return False
             return True
 
         if qualify_result(result):
