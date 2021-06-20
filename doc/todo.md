@@ -1,12 +1,14 @@
-# Todo in Chinese
+# TODOs in Chinese
+
+
 
 ### Todo:
-- 考虑集成生成 coco json RLE 版本
 - 不变的, 需要设置项的放在 defaults(分辨率)
 - 可能做 DR 变化的设置项由用户自己管理
 - 考虑 docker 一键生成数据集
 
 ### Done:
+- 考虑集成生成 coco json RLE 版本
 - 将 gen_utils 集成到 bpycv
 - 基于 zcs 统一的参数管理和继承
 - 能一键生成数据集
@@ -31,3 +33,14 @@ Q: 如何管理和分发 10GB 的 hdri?
 A: 两种方案
 - 写死 hdri names, 并自动从 hdri haven 自动下载
 - 打包进 docker/magnet/云服务
+
+### Draft
+
+1. prepare Blender with bpycv
+1. prepare HDRI
+1. Dockerfile
+1. to coco
+
+docker run -it python bash
+git clone http://github.com/diyer22/bpycv
+python bpycv/bpycv/hdri_manager.py
