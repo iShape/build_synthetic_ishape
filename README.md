@@ -18,7 +18,7 @@ git clone git@github.com:iShape/source_asset.git
 ```
 4. Prepare background
     - `python build_synthetic_ishape/tool/download_background_hdri.py`
-    - Which will download hdr file from [HDRI Haven](https://hdrihaven.com/) to `build_synthetic_ishape/source_asset/shared/hdri/all`
+    - Which will download hdr file from [HDRI Haven](https://hdrihaven.com/) to `build_synthetic_ishape/source_asset/shared/hdri`
 
 5. Synthesis dataset by Blender
     - `cd build_synthetic_ishape`

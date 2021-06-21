@@ -221,7 +221,7 @@ class HdriManager:
 
 if __name__ == "__main__":
     hdri_dir = os.path.abspath(
-        os.path.join(__file__, "../../../source_asset/shared/hdri/all2")
+        os.path.join(__file__, "../../../source_asset/shared/hdri")
     )
     print("\nDownload hdri file to", hdri_dir, "\n")
     hm = HdriManager(hdri_dir=hdri_dir, download=True, debug=True)

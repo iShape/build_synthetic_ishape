@@ -23,8 +23,7 @@ class HangerGenerator(MetaDatasetGenerator):
         )
         super().__init__(cfg)
         self.hdri_manager = bpycv.HdriManager(
-            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri/all"),
-            category="indoor",
+            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri"), category="indoor",
         )
 
     def generate_one(self, dirr, index, meta_seed=0):

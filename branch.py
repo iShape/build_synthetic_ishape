@@ -27,8 +27,7 @@ class BranchGenerator(MetaDatasetGenerator):
     def __init__(self, cfg):
         super().__init__(cfg)
         self.hdri_manager = bpycv.HdriManager(
-            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri/all"),
-            category="nature",
+            hdri_dir=os.path.join(cfg.SOURCE_ASSET, "shared/hdri"), category="nature",
         )
 
     def generate_one(self, dirr, index, meta_seed=0):
