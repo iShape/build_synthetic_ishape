@@ -1,13 +1,14 @@
 # TODOs in Chinese
-
-
-
 ### Todo:
 - 不变的, 需要设置项的放在 defaults(分辨率)
 - 可能做 DR 变化的设置项由用户自己管理
-- 考虑 docker 一键生成数据集
+- docker 一键生成数据集
+- 更新 download, 自动 sleep
+- 更好的文档
 
 ### Done:
+- 更新 iShape 网页
+- 添加 lisense for both 2 repos
 - 考虑集成生成 coco json RLE 版本
 - 将 gen_utils 集成到 bpycv
 - 基于 zcs 统一的参数管理和继承
