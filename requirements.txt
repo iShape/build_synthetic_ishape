@@ -1,2 +1,4 @@
 bpycv>=0.2.40
 boxx>=0.9.3
+zcs
+pycocotools
