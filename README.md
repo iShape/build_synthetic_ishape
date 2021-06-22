@@ -4,7 +4,7 @@
 ![image](https://user-images.githubusercontent.com/10448025/122861394-f61f7300-d351-11eb-9aca-3e51bde679c7.png)    
 *Visualization of generated dataset*
 
-About iShape dataset: https://ishape.github.io/
+About iShape dataset: https://ishape.github.io/ 
 
 Source code of building iShape-Branch, Fence, Log, Hanger, and Wire. 
 
@@ -15,7 +15,7 @@ We provide two methods to run this code:
 2. **Install from scratch**: A little bit complex. If you get any problem when install from scratch, you can also refer to [Dockerfile](./Dockerfile) which includes details installation instructions.
 
 ## ▮ Docker
-**Build dataset by command line:**
+**Build dataset by one command line:**
 ```bash
 mkdir synthetic_ishape_dataset
 

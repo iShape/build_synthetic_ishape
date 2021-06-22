@@ -2,11 +2,11 @@
 ### Todo:
 - 不变的, 需要设置项的放在 defaults(分辨率)
 - 可能做 DR 变化的设置项由用户自己管理
-- docker 一键生成数据集
-- 更新 download, 自动 sleep
-- 更好的文档
 
 ### Done:
+- docker 一键生成数据集
+- 更好的文档
+- ~~更新 download, 自动 sleep~~(可以直接下载了)
 - 更新 iShape 网页
 - 添加 lisense for both 2 repos
 - 考虑集成生成 coco json RLE 版本
@@ -34,14 +34,5 @@ Q: 如何管理和分发 10GB 的 hdri?
 A: 两种方案
 - 写死 hdri names, 并自动从 hdri haven 自动下载
 - 打包进 docker/magnet/云服务
+- 最后选择了打包进 docker
 
-### Draft
-
-1. prepare Blender with bpycv
-1. prepare HDRI
-1. Dockerfile
-1. to coco
-
-docker run -it python bash
-git clone http://github.com/diyer22/bpycv
-python bpycv/bpycv/hdri_manager.py
