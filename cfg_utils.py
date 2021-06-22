@@ -5,11 +5,12 @@ import argparse
 from zcs import argument, ints
 from zcs.config import CfgNode as CN
 
+import bpy
 import bpycv
 from bpycv.dataset_utils.cfg_utils import *
 
+bpy.context.scene.view_layers[0].cycles.use_denoising = True
 bpycv.set_cycles_compute_device_type()
-
 cfg.SOURCE_ASSET = os.path.abspath(os.path.join(__file__, "../../source_asset"))
 
 

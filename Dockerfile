@@ -11,4 +11,4 @@ WORKDIR /build_synthetic_ishape
 # CMD blender --background --python branch.py -- DIR ../synthetic_ishape_dataset/branch/train/ IMG_NUM 2000
 CMD python build_synthetic_ishape.py
 
-# docker build . -t ishape; docker run -it -v /tmp:/tmp ishape blender -b -P branch.py -- DIR /tmp/dataset_tmp IMG_NUM 200 RESOLUTION 256,256
+# docker build . -t diyer22/ishape; docker run -it -v /tmp:/tmp diyer22/ishape blender -b -P branch.py -- DIR /tmp/dataset_tmp IMG_NUM 200 RESOLUTION 256,256
