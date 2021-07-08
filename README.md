@@ -1,7 +1,7 @@
 # Source code of building iShape synthetic data by Blender
 
 
-![image](https://user-images.githubusercontent.com/10448025/122861394-f61f7300-d351-11eb-9aca-3e51bde679c7.png)    
+![image](https://user-images.githubusercontent.com/10448025/124855741-ff5c4100-dfdb-11eb-9e8f-987a170bbb5a.png)    
 *Visualization of generated dataset*
 
 About iShape dataset: https://ishape.github.io/ 
